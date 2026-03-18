@@ -19,8 +19,6 @@ Dataset: [heart.csv](CSVs/heart.csv)
 
 Cleaned Dataset: [heart_cleaned.csv](CSVs/heart_cleaned.csv)
 
-Normalized Dataset: [Mental_Health_Cleaned_Normalized.csv](CSV/Mental_Health_Cleaned_Normalized.csv)
-
 ## 3. Decision Tree and Confusion Matrix
 ### Process
 - Split the dataset into training and testing subsets.
