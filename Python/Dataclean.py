@@ -13,6 +13,8 @@ print("Cleaned cholesterol field: \n", df, "\n")
 df = df.loc[df['RestingBP'] != 0]
 print("Cleaned resting bp field: \n", df) # no change in row number, cleaning cholesterol field took care of this field as well. 
 
+# clean negative old peak values 
+
 # print out to csv
 df.to_csv('/Users/jush/Desktop/Heart Disease/heart_cleaned.csv')
 print("DataFrame successfully exported to csv...")

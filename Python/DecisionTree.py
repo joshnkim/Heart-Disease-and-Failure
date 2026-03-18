@@ -22,8 +22,9 @@ print(df)
 
 # splitting
 training, testing = train_test_split(df, test_size=0.2, random_state=42)
-print('\nThe training Data is: ', training, '\n')
+print('\nThe training Data is: \n', training, '\n')
 print('The testing data is: \n', testing, '\n')
+
 
 # balance training set
 counts = training['HeartDisease'].value_counts()
@@ -49,7 +50,7 @@ test_label = testing['HeartDisease']
 testing = testing.drop(['HeartDisease'], axis=1)
 
 print('Training Labels: \n', train_label, '\n')
-print('Training set: \n', training, '\n')
+print('Training set: \n', balanced_train, '\n')
 print('Testing labels: \n', test_label, '\n')
 print('Testing set: \n', testing, '\n')
 

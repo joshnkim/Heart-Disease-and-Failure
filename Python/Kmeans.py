@@ -7,6 +7,7 @@ import numpy as np
 from sklearn.preprocessing import StandardScaler
 from mpl_toolkits.mplot3d import Axes3D
 
+
 data = pd.read_csv('/Users/jush/Desktop/Heart Disease/heart_cleaned.csv')
 df = pd.DataFrame(data)
 print(df)
@@ -14,7 +15,8 @@ print(df)
 df['Sex'] = df['Sex'].replace({'M': 0, 'F': 1})
 df['ExerciseAngina'] = df['ExerciseAngina'].replace({'N':0, 'Y':1})
 
-df = df.drop(columns=['Unnamed: 0', 'RestingECG', 'ST_Slope', 'ChestPainType'], axis=1)
+
+df = df.drop(columns=['Unnamed: 0', 'RestingECG', 'ST_Slope', 'ChestPainType', 'HeartDisease'], axis=1)
 
 print("Find Columns for K Assignment: \n", df.columns.tolist(), ",\n")
 
@@ -23,6 +25,7 @@ x = df[['Age', 'Sex',
         'RestingBP', 'Cholesterol', 'FastingBS', 
         'MaxHR', 'ExerciseAngina', 
         'Oldpeak']]
+        
 
 # visualize in 3D
 chart = plt.figure()
@@ -42,7 +45,7 @@ plt.title('3D Visualization')
 plt.show()
     
 
-# Kmeans with k = 3
+# Kmeans with k = 4
 kmeans = KMeans(n_clusters=4, random_state=42)
 kmeans.fit(x)
 
@@ -50,6 +53,16 @@ kmeans.fit(x)
 labels = kmeans.labels_
 print('Cluster Labels K=3: \n', labels, '\n')
 print('Centroids K=3: \n', kmeans.cluster_centers_, '\n')
+
+
+# readable labels 
+
+ldf = df 
+ldf['Cluster'] = kmeans.labels_
+pd.set_option('display.max_columns', None)
+print('Label dataset: \n', ldf, '\n')
+ldf.to_csv('/Users/jush/Desktop/Heart Disease/labeltable.csv')
+
 
 # readable centroids
 features = ['Age', 'Sex', 
